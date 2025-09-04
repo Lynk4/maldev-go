@@ -6,33 +6,34 @@ import (
     "os"
 )
 
-func main() {
+func main()  {
+
     key := byte(133)
 
-    pShellcodePath := flag.String("file", "", "Path of the shellcode")
+    // ./prepare -file=/home/kali/clearshellcode.bin
+    pShellcodePath := flag.String("file", "", "Path Of the Shellcode")
     flag.Parse()
 
     shellcodePath := *pShellcodePath
-
-    clearshellcodeByte, err := os.ReadFile(shellcodePath)
+    
+    clearShellcodeByte, err := os.ReadFile(shellcodePath)
     if err != nil {
-        fmt.Println("Error.......opening.....file.....")
+        fmt.Println("Error Opening file")
         fmt.Println(err.Error())
-
     }
 
     var encryptedShellcode []byte
 
-    for i := 0; i < len(clearshellcodeByte); i++ {
-        encryptedShellcode = append(encryptedShellcode, clearshellcodeByte[i] ^ key)
+    for i := 0; i < len(clearShellcodeByte); i++ {
+        encryptedShellcode = append(encryptedShellcode, clearShellcodeByte[i] ^ key )
     }
+
     fmt.Print("[]byte{")
-    for i := 0; i < len(encryptedShellcode); i++ {
-    if i == len(encryptedShellcode)-1 {
-        fmt.Printf("%d", encryptedShellcode[i]) // last element, no comma
-    } else {
-        fmt.Printf("%d, ", encryptedShellcode[i]) // add comma + space
+    for i := 0; i < len(clearShellcodeByte); i++ {
+        if i == len(clearShellcodeByte) - 1 {
+            fmt.Println(encryptedShellcode[i], "}")
+        } else {
+            fmt.Print(encryptedShellcode[i], ", ")
+        }
     }
-}
-    fmt.Println("}")
 }
