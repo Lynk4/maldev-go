@@ -109,6 +109,26 @@ kant@APPLEs-MacBook-Pro ~/e/shellcode>
 
 ```
 
+---
+
+Encrypt Shellcode (XOR)
+
+- Use the Go-based encryptor:
+
+- This outputs an encrypted []byte{...} array.
+
+- File path: Xor Encryption/shellcode/Xor-Enc/main.go
+
+- Paste Encrypted Payload into Loader
+
+- Take the generated []byte{...} array.
+
+- Paste it inside the loader decryptor (Xor Encryption/loader/exp/main.go).
+
+- The loader decrypts it in-memory and executes it.
+
+---
+
 ## 🌐 Why XOR?
 
 XOR encryption is one of the oldest tricks in the book for malware authors:
@@ -124,12 +144,24 @@ XOR encryption is one of the oldest tricks in the book for malware authors:
 Of course, advanced security tools can still catch this — but it’s a first step in maldev learning.
 
 
-
-
 ---
 ---
 
-## Decryptor
+## 🔓 Decryptor (Go) 
+
+This Decryptor is the counterpart to your Encryptor. While the encryptor takes raw shellcode and obfuscates it with a simple XOR cipher, the decryptor reverses the magic and actually executes the payload in memory on Windows.
+
+## 🔑 What It Does
+
+- Takes the XOR-encrypted payload from the Encryptor.
+
+- Decrypts it back into clear shellcode.
+
+- Allocates memory in Windows.
+
+- Copies the payload into memory, flips protections, and executes via CreateThread.
+
+## Xor Encryption/loader/exp/main.go
 
 ```go
 package main
@@ -204,3 +236,8 @@ exp/      go.mod    go.sum    main.exe*
 ```
 
 ---
+
+
+
+
+
