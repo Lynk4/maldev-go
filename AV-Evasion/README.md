@@ -1,7 +1,18 @@
 
 # 🛡️ Defender Evasion  
 
-> _Because Windows Defender can’t stop what it can’t see._ ⚡  
+> _Because Windows Defender can’t stop what it can’t see._ 
+
+
+> Minimal, research-focused toolkit for encrypted shellcode delivery & in-memory execution (Go).
+
+---
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Research-red?style=for-the-badge" /> 
+  <img src="https://img.shields.io/badge/Lang-Go%20%7C%20Shell-red?style=for-the-badge" /> 
+  <img src="https://img.shields.io/badge/Scope-Encryption%20%7C%20Loader-blue?style=for-the-badge" />
+</p>
 
 ---
 
